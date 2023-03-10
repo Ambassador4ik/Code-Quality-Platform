@@ -1,0 +1,27 @@
+version: "3"
+services:
+    project-builder:
+        image: ambassador4ik/dotnet-solution-restore
+        volumes:
+            - ${INPUT_DIR}:/input/
+            - ${BUILDER_OUTPUT_DIR}:/output/
+
+    qodana:
+        image: jetbrains/qodana-dotnet
+        volumes:
+            - ${BUILDER_OUTPUT_DIR}:/data/project/
+            - ${QODANA_OUTPUT_DIR}:/data/results/
+        command:
+            - --save-report
+        depends_on:
+            project-builder:
+                condition: service_completed_successfully
+
+    compiler:
+        image: ambassador4ik/dotnet-compiler
+        volumes:
+            - ${BUILDER_OUTPUT_DIR}:/input/
+            - ${COMPILER_OUTPUT_DIR}:/output/
+        depends_on:
+            project-builder:
+                condition: service_completed_successfully
