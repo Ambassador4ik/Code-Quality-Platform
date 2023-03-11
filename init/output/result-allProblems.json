@@ -1,0 +1,129 @@
+{"version":"3","listProblem":[{
+  "tool": "Code Inspection",
+  "category": "Constraints Violations",
+  "type": "Namespace does not correspond to file location",
+  "tags": [
+    "C#",
+    ".NET 7.0"
+  ],
+  "severity": "High",
+  "comment": "Namespace does not correspond to file location, must be: 'output'",
+  "detailsInfo": "Namespace in file does not have a form of 'project Default Namespace plus folder names in the path to the file'. You can configure which folders form the namespace on the folder's Properties page. [Learn more...](https://www.jetbrains.com/help/rider/CheckNamespace.html)",
+  "sources": [
+    {
+      "type": "file",
+      "path": "Program.cs",
+      "language": "C#",
+      "line": 1,
+      "offset": 14,
+      "length": 7,
+      "code": {
+        "startLine": 1,
+        "length": 7,
+        "offset": 13,
+        "surroundingCode": "public class Program\n{\n  public static void Main(string[] args)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "output",
+    "inspectionName": "CheckNamespace"
+  },
+  "hash": "d8c27738ceb2ab695b3f96d1e8eddedaceae86b5d4d62858686a002afa125b21"
+},{
+  "tool": "Code Inspection",
+  "category": "Potential Code Quality Issues",
+  "type": "Class is never instantiated (non-private accessibility)",
+  "tags": [
+    "C#",
+    ".NET 7.0"
+  ],
+  "severity": "Moderate",
+  "comment": "Class 'Program' is never instantiated",
+  "detailsInfo": "Non-static class is never instantiated [Learn more...](https://www.jetbrains.com/help/rider/ClassNeverInstantiated.Global.html)",
+  "sources": [
+    {
+      "type": "file",
+      "path": "Program.cs",
+      "language": "C#",
+      "line": 1,
+      "offset": 14,
+      "length": 7,
+      "code": {
+        "startLine": 1,
+        "length": 7,
+        "offset": 13,
+        "surroundingCode": "public class Program\n{\n  public static void Main(string[] args)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "output",
+    "inspectionName": "ClassNeverInstantiated.Global"
+  },
+  "hash": "cfd7318de37565412f166b0c5a60de8a386001af362910309fac6e20aeb6dc57"
+},{
+  "tool": "Code Inspection",
+  "category": "General",
+  "type": "Roslyn analyzers output",
+  "tags": [
+    "C#",
+    ".NET 7.0"
+  ],
+  "severity": "Moderate",
+  "comment": "RoslynAnalyzers Declare types in namespaces: Declare types in namespaces",
+  "detailsInfo": "Presents output of Roslyn analyzers",
+  "sources": [
+    {
+      "type": "file",
+      "path": "Program.cs",
+      "language": "C#",
+      "line": 1,
+      "offset": 14,
+      "length": 7,
+      "code": {
+        "startLine": 1,
+        "length": 7,
+        "offset": 13,
+        "surroundingCode": "public class Program\n{\n  public static void Main(string[] args)"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "output",
+    "inspectionName": "RoslynAnalyzersOutputInspection"
+  },
+  "hash": "3481a9047e704cd86ceab3e78ce71db566731c7ee4c0ddfb99c994c6a70424cf"
+},{
+  "tool": "Code Inspection",
+  "category": "Redundancies in Symbol Declarations",
+  "type": "Unused parameter (non-private accessibility)",
+  "tags": [
+    "C#",
+    ".NET 7.0"
+  ],
+  "severity": "Moderate",
+  "comment": "Parameter 'args' is never used",
+  "detailsInfo": "Parameter is never used",
+  "sources": [
+    {
+      "type": "file",
+      "path": "Program.cs",
+      "language": "C#",
+      "line": 3,
+      "offset": 36,
+      "length": 4,
+      "code": {
+        "startLine": 1,
+        "length": 4,
+        "offset": 58,
+        "surroundingCode": "public class Program\n{\n  public static void Main(string[] args)\n  {\n      Console.WriteLine(\"Hello World!\");"
+      }
+    }
+  ],
+  "attributes": {
+    "module": "output",
+    "inspectionName": "UnusedParameter.Global"
+  },
+  "hash": "6cac18bf0906d5b98359c3a74da0dbc1576793d39227ed40b7330e38f25e7cd3"
+}]}

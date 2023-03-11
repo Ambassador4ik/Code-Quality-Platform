@@ -1,14 +1,19 @@
 rm -rf data && mkdir data
 rm -rf output && mkdir output
 cd data
-mkdir input output builder-output compiler-output
+mkdir input output builder-output compiler-output tests checker-output
+cd ..
+cp -a tests/. data/tests
 
+cd data
 touch .env
 cat <<EOT >> .env
 INPUT_DIR="./input/"
 BUILDER_OUTPUT_DIR="./builder-output/"
 QODANA_OUTPUT_DIR="./output/"
 COMPILER_OUTPUT_DIR="./compiler-output/"
+TESTS_INPUT_DIR="./tests/"
+CHECKER_OUTPUT_DIR="./checker-output/"
 EOT
 
 touch docker-compose.yaml
@@ -40,6 +45,15 @@ services:
         depends_on:
             project-builder:
                 condition: service_completed_successfully
+    checker:
+        image: ambassador4ik/dotnet-checker
+        volumes:
+            - \${COMPILER_OUTPUT_DIR}:/compiler-output/
+            - \${TESTS_INPUT_DIR}:/input/
+            - \${CHECKER_OUTPUT_DIR}:/output/
+        depends_on:
+            compiler:
+                condition: service_completed_successfully
 EOT
 
 cd ..
@@ -50,6 +64,6 @@ docker-compose up
 docker-compose down
 
 cd ..
-cp -r data/compiler-output output/compiler
+cp -r data/checker-output/out.json output
 cp data/output/report/results/result-allProblems.json output/result-allProblems.json
 rm -rf data

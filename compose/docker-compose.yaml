@@ -25,3 +25,13 @@ services:
         depends_on:
             project-builder:
                 condition: service_completed_successfully
+
+    checker:
+        image: ambassador4ik/dotnet-checker
+        volumes:
+            - ${COMPILER_OUTPUT_DIR}:/compiler-output/
+            - ${TESTS_INPUT_DIR}:/input/
+            - ${CHECKER_OUTPUT_DIR}:/output/
+        depends_on:
+            compiler:
+                condition: service_completed_successfully
